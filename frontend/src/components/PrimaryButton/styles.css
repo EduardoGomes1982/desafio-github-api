@@ -1,0 +1,11 @@
+#primary-button {
+    background-color: var(--dg-color-bg-color-secondary);
+    color: var(--dg-color-text-color-primary);
+    width: 101px;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid var(--dg-color-bg-color-secondary);
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+}

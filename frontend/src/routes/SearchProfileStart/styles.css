@@ -1,0 +1,15 @@
+#search-profile-start {
+    padding: 27px 40px;
+}
+
+#search-profile-start h2 {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--dg-color-text-color-secondary);
+}
+
+#search-profile-start p {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--dg-color-text-color-tertiary);
+}
