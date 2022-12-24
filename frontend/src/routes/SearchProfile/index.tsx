@@ -1,5 +1,15 @@
+import MatchResponse from "../../components/MatchResponse";
 import PrimaryButton from "../../components/PrimaryButton";
+import { ProfileDTO } from "../../models/Profile/profile";
 import "./styles.css";
+
+const p: ProfileDTO = {
+    url: "alguma.coisa.com.br",
+    followers: 250,
+    location: "Brasil",
+    name: "Eduardo",
+    avatar: "https://avatars.githubusercontent.com/u/13897257?v=4"
+}
 
 export default function SearchProfile() {
     return (
@@ -14,7 +24,7 @@ export default function SearchProfile() {
                 </form>
             </section>
             <section id="response-section">
-
+                <MatchResponse profile={p} />
             </section>
         </main>
     );

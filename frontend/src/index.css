@@ -4,11 +4,14 @@
   --dg-color-bg-color-primary: #FFFFFF;
   --dg-color-bg-color-secondary: #1890FF;
   --dg-color-bg-color-tertiary: #E6F7FF;
+  --dg-color-bg-color-quaternary: #F5F5F5;
 
   --dg-color-text-color-primary: #FFFFFF;
   --dg-color-text-color-secondary: #000000;
   --dg-color-text-color-tertiary: #7E7E7E;
   --dg-color-text-color-quaternary: #BFBFBF;
+  --dg-color-text-color-quinternary: #5C5858;
+  --dg-color-text-color-sexternary: #737373;
 
   --dg-color-border-color-primary: #D9D9D9;
 }

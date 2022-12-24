@@ -22,14 +22,21 @@
 .textbox {
     height: 40px;
     max-width: 300px;
+    width: 100%;
     border: 1px solid var(--dg-color-border-color-primary);
     margin-top: 12px;
     padding: 0px 15px;
     outline: none;
     border-radius: 4px;
+    font-size: 16px;
+    color: var(--dg-color-text-color-quinternary);
 }
 
 .textbox::placeholder {
     font-size: 16px;
     color: var(--dg-color-text-color-quaternary);
+}
+
+#response-section {
+    padding: 0px 90px;
 }
