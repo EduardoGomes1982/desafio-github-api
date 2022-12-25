@@ -6,7 +6,7 @@ type Props = {
 
 export default function PrimaryButton({ buttonTitle }: Props) {
     return (
-        <button id="primary-button">
+        <button id="primary-button" type="submit">
             {buttonTitle}
         </button>
     );
