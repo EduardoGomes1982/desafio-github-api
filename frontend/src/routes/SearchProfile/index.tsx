@@ -24,8 +24,10 @@ export default function SearchProfile() {
         url: ''
     });
 
-    function handleChange(event: any) {
-        setFormData({ ...formData, sufixProfile: event.target.value });
+    function handleImputChange(event: any) {
+        const value = event.target.value;
+        const name = event.target.name
+        setFormData({ ...formData, [name]: value });
     };
 
     function handleSubmit(event: any) {
@@ -52,7 +54,7 @@ export default function SearchProfile() {
                 <form id="form-search" onSubmit={handleSubmit} className="profile-container">
                     <h2>Encontre um perfil Github</h2>
                     <input name="sufixProfile" className="textbox"
-                        type="text" placeholder="Usuário Github" onChange={handleChange}
+                        type="text" placeholder="Usuário Github" onChange={handleImputChange}
                         value={formData.sufixProfile}
                     />
                     <div className="margin-top-button">
