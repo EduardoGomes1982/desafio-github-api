@@ -1,6 +1,7 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MatchResponse from "../../components/MatchResponse";
+import NoMatchResponse from "../../components/NoMatchResponse";
 import PrimaryButton from "../../components/PrimaryButton";
 import { ProfileDTO } from "../../models/Profile/profile";
 import "./styles.css";
@@ -16,6 +17,13 @@ export default function SearchProfile() {
         sufixProfile: ''
     });
 
+    const [conditions, setConditions] = useState({
+        showResponse: false,
+        noContent: false
+    });
+
+    const [click, setClick] = useState(0);
+
     const [profile, setProfile] = useState<ProfileDTO>({
         avatar: '',
         followers: 0,
@@ -27,22 +35,32 @@ export default function SearchProfile() {
     function handleImputChange(event: any) {
         const value = event.target.value;
         const name = event.target.name
-        setFormData({ ...formData, [name]: value });
+        setFormData({ ...formData, [name]: value })
     };
 
     function handleSubmit(event: any) {
         event.preventDefault();
-        getProfileDTO(formData.sufixProfile)
-            .then(response => {
-                setProfile({
-                    url: response.data.url,
-                    followers: Number(response.data.followers),
-                    location: response.data.location,
-                    name: response.data.name,
-                    avatar: response.data.avatar_url
-                })
-            });
+        setClick(click + 1);
+        formData.sufixProfile === ''
+            ? setConditions({ ...conditions, showResponse: false })
+            : setConditions({ ...conditions, showResponse: true })
     };
+
+    useEffect(() => {
+        if (formData.sufixProfile != '')
+            axios.get(uri + formData.sufixProfile)
+                .then(response => {
+                    console.log(response.data);
+                    setConditions({ ...conditions, noContent: false });
+                    setProfile({
+                        avatar: response.data.avatar_url,
+                        followers: Number(response.data.followers),
+                        location: response.data.location,
+                        name: response.data.name,
+                        url: response.data.url
+                    });
+                }).catch(() => setConditions({ ...conditions, noContent: true }));
+    }, [click]);
 
     function getProfileDTO(userProfile: string): Promise<any> {
         return axios.get(uri + userProfile)
@@ -63,7 +81,13 @@ export default function SearchProfile() {
                 </form>
             </section>
             <section id="response-section">
-                <MatchResponse profile={profile} />
+                {
+                    !conditions.showResponse
+                        ? (<></>)
+                        : conditions.noContent
+                            ? (<NoMatchResponse />)
+                            : (<MatchResponse profile={profile} />)
+                }
             </section>
         </main>
     );

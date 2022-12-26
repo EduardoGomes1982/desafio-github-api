@@ -1,9 +1,12 @@
+import { NavLink } from "react-router-dom"
 import "./styles.css"
 
 export default function Header() {
-    return(
+    return (
         <header>
-            <h1>Github API</h1>
+            <NavLink to="/">
+                <h1>Github API</h1>
+            </NavLink>
         </header>
     );
 }
